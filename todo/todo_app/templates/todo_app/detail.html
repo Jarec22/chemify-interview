@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "todo_app/base.html" %}
+<head>
+    <title>Todo Item Detail</title>
+</head>
+{% block content %}
+    <h1>Todo Item Detail</h1>
+    <h3>{{ todo.title }}</h3>
+    <p>{{ todo.description }}</p>
+    {% if todo.completed %}
+        <p>Status: Completed</p>
+    {% else %}
+        <p>Status: Incomplete</p>
+    {% endif %}
+    <p>Created at: {{ todo.created_at }}</p>
+    <p>Updated at: {{ todo.updated_at }}</p>
+    <a href="{% url 'todo_app:update' todo.pk %}">Update</a> |
+    <a href="{% url 'todo_app:delete' todo.pk %}">Delete</a> |
+    <a href="{% url 'todo_app:complete' todo.pk %}">Complete</a> |
+    <a href="{% url 'todo_app:list' %}">Back to list</a>
+</body>
+{% endblock content %}
+</html>

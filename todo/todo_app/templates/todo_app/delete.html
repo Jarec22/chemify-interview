@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "todo_app/base.html" %}
+<head>
+    <title>Delete Task</title>
+</head>
+{% block content %}
+    <h1>Delete Task</h1>
+    <h3>Are you sure you want to delete the following task?</h3>
+    <h3>{{ todo.title }}</h3>
+    <p>{{ todo.description }}</p>
+    <form method="post" action="{% url 'todo_app:delete' todo.pk %}">
+        {% csrf_token %}
+        <input type="submit" value="Delete Task">
+    </form>
+    <a href="{% url 'todo_app:list' %}">Cancel</a>
+{% endblock content %}
+</html>

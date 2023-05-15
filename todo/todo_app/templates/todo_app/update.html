@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends "todo_app/base.html" %}
+<head>
+    <title>Update Task</title>
+</head>
+{% block content %}
+    <h1>Update Task</h1>
+    <form method="post" action="{% url 'todo_app:update' todo.pk %}">
+        {% csrf_token %}
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" value="{{ todo.title }}" required><br>
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description">{{ todo.description }}</textarea><br>
+        <input type="submit" value="Update Task">
+    </form>
+    <a href="{% url 'todo_app:list' %}">Cancel</a>
+{% endblock content %}
+</html>

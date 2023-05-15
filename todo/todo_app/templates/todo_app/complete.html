@@ -1,0 +1,16 @@
+{% extends "todo_app/base.html" %}
+<head>
+    <title>Complete Task</title>
+</head>
+{% block content %}
+    <h1>Complete Task</h1>
+    <h3>Did you complete the task?</h3>
+    <h3>{{ todo.title }}</h3>
+    <p>{{ todo.description }}</p>
+    <form method="post" action="{% url 'todo_app:complete' todo.pk %}">
+        {% csrf_token %}
+        <input type="submit" value="Complete Task">
+    </form>
+    <a href="{% url 'todo_app:list' %}">Cancel</a>
+{% endblock content %}
+</html>
